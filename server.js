@@ -1,39 +1,38 @@
 
-// Meteo 
+const http = require('http');
+const port = process.env.PORT || 3000
 
-const express = require('express');          // init modulo EXPRESS
-const app = express() 						  
-const bodyParser = require('body-parser');   // init altri Moduli
-const request = require('request');          // deprecato ( bent)
+const express = require('express');
+const bodyParser = require('body-parser');
+const request = require('request');
+const app = express()
 
-const apiKey = '';            	 // set chiave api 
+const apiKey = '07870c534628530f296d43ceb11f1c82';
 
-app.use(express.static('public'));          		    // fornisco il nome della directory da gestire tramite express
-app.use(bodyParser.urlencoded({ extended: true }));   	// Parsing dei risultati da URL per manipolazione diretta tramite javascript
-app.set('view engine', 'ejs')   		   			    // Utilizzo EJS come Template Engine anzichè handlebars
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'ejs')
 
 app.get('/', function (req, res) {
-  res.render('index', {weather: null, error: null});   // prima rotta / Homepage rendering - Stato iniziale 
+  res.render('index', {weather: null, error: null});
 })
 
-// Corpo
-
-app.post('/', function (req, res) {                   // Metodo POST verso API / rotta
-  let city = req.body.city;
-  let url = `http://api.openweathermap.org/data/2.5/forecast?id=${city}&units=celsius&appid=${apiKey}`
+app.post('/', function (req, res) {
+  let città = req.body.città;
+  let url = `http://api.openweathermap.org/data/2.5/weather?q=${città}&units=Metric&appid=${apiKey}`
 
   request(url, function (err, response, body) {
     if(err){
-      res.render('index', {weather: null, error: 'ERRORE!'});  // Controllo dell'errore o dell'undefined - ERR
+      res.render('index', {weather: null, error: 'Error, please try again'});
     } else {
-      let weather = JSON.parse(body)  // JSON Parsing della riposta
+      let weather = JSON.parse(body)
       if(weather.main == undefined){
-        res.render('index', {weather: null, error: 'ERRORE!'}); // ERR
+        res.render('index', {weather: null, error: 'Error, please try again'});
       } else {
-        let weatherText = `Ci sono ${weather.main.temp} gradi a ${weather.name}!`;
-        res.render('index', {weather: weatherText, error: null});  // OK
+        let weatherText = `Ci sono ${weather.main.temp} gradi Celsius a ${weather.name}!`;
+        res.render('index', {weather: weatherText, error: null});
       }
-    }															
+    }
   });
 })
 

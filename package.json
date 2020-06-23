@@ -7,6 +7,17 @@
     "start": "node server.js"
   },
   
+  "repository": {
+  "type": "git",
+  "url": ""
+},
+   
+   "author": "Fumagalli",
+  "license": "ISC",
+  "bugs": {
+  "url": ""
+},
+  "homepage": "",
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
