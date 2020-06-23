@@ -6,7 +6,7 @@ Deployed on Heroku for testing: https://app-meteo-mf.herokuapp.com/
 
 ----------
 
-This app accept for input a city name and respond with a temperature value (Celsius) fetched from OpenWeatherMap API.
+This app accept in input a city name and respond with a temperature value (Celsius) fetched from OpenWeatherMap API.
 
 ![Image](/blob/image.jpg)
 
