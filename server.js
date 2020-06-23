@@ -1,7 +1,10 @@
 
 const http = require('http');
-const port = process.env.PORT || 5000
-.listen(process.env.PORT || 5000)
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`App in ascolto sulla porta ${ PORT }`);
+});
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -35,8 +38,4 @@ app.post('/', function (req, res) {
       }
     }
   });
-})
-
-app.listen(3000, function () {
-  console.log('APP in ascolto sulla porta 5000!')
 })
