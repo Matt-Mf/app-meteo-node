@@ -1,11 +1,5 @@
 
 const http = require('http');
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`App in ascolto sulla porta ${ PORT }`);
-});
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
@@ -39,3 +33,9 @@ app.post('/', function (req, res) {
     }
   });
 })
+
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`App in ascolto sulla porta ${ PORT }`);
+});
