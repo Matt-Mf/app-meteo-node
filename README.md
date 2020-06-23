@@ -1,6 +1,6 @@
 # app-meteo-node
 
-Simple node-js app built in 2019 for learning purpouse.
+Simple node-js app built in 2019.
 
 Deployed on Heroku for testing: https://app-meteo-mf.herokuapp.com/
 
